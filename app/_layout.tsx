@@ -33,7 +33,7 @@ export default function App() {
   }, []);
 
   // Kích thước nút bấm và hình ảnh
-  const buttonWidth = width / 2;
+  const buttonWidth = width / 2 - 20; // Dành một chút không gian cho khoảng cách
   const imageWidth = width * 0.8;
 
   return (
@@ -60,19 +60,21 @@ export default function App() {
           />
 
           {/* Custom-styled buttons */}
-          <TouchableOpacity
-            style={[styles.button, { width: buttonWidth }]}
-            onPress={() => {}}
-          >
-            <Text style={styles.buttonText}>Button 1</Text>
-          </TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              style={[styles.button, { width: buttonWidth }]}
+              onPress={() => {}}
+            >
+              <Text style={styles.buttonText}>Button 1</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity
-            style={[styles.button, { width: buttonWidth }]}
-            onPress={() => {}}
-          >
-            <Text style={styles.buttonText}>Button 2</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.button, { width: buttonWidth }]}
+              onPress={() => {}}
+            >
+              <Text style={styles.buttonText}>Button 2</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         {/* Improved TextInput */}
@@ -112,13 +114,21 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   portraitContainer: {
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-around',
     alignItems: 'center',
   },
   landscapeContainer: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   button: {
@@ -128,6 +138,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 10,
+    marginHorizontal: 10, // Thêm khoảng cách giữa các nút
     // Add shadow for iOS
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
